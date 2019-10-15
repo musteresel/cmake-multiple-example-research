@@ -1,26 +1,25 @@
-[BITS 32]
+        .code32
 
-[GLOBAL kernelentry]
-[EXTERN Run]
+        .globl kernelentry
 
-FLAGS	equ 0
-MAGIC	equ 0x1BADB002
-CHECKSUM	equ -(MAGIC + FLAGS)
+        .set FLAGS, 0
+        .set MAGIC, 0x1BADB002
+        .set CHECKSUM, -(MAGIC + FLAGS)
 
-[SECTION .boot]
-align 4
+        .section .boot
+        .align 4
 MultibootHeader:
-	dd MAGIC
-	dd FLAGS
-	dd CHECKSUM
+	.long MAGIC
+	.long FLAGS
+	.long CHECKSUM
 
 kernelentry:
-	lea esp,[kstack]
+	movl $kstack, %esp
 	call Run
 	cli
 	hlt
 
 
-[SECTION .bss]
-resb 1024 ;1 KB Stack space
+        .section .bss
+        .lcomm kstack_bottom, 1024 // 1 KB Stack space
 kstack:

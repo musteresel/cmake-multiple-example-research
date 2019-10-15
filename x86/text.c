@@ -1,7 +1,7 @@
-#include <stddef.h>
+#include <stdint.h>
 #include <stdbool.h>
 
-void PrintNumber(int const number)
+void PrintNumber(int number)
 {
   uint16_t * const video = (uint16_t *)0xB8000;
   unsigned const width = 10;

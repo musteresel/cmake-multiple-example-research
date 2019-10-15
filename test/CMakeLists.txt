@@ -1,0 +1,6 @@
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_C_COMPILER_WORKS 1)
+project(multiple-test C)
+find_package(multiple)
+add_executable(tst user.c)
+target_link_libraries(tst multiple::lib)
