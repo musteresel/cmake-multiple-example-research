@@ -6,7 +6,7 @@ if (LIB_TARGET STREQUAL "x86")
   enable_language(ASM)
   target_sources(lib PRIVATE x86/start.s x86/text.c)
   # set_target_properties(lib PROPERTIES LINK_DEPENDS ${CMAKE_SOURCE_DIR}/x86/link.ld)
-  target_link_options(lib INTERFACE
+  target_link_options(lib INTERFACE -nostartfiles
     $<BUILD_INTERFACE: -T x86/link.ld>)
     # $<INSTALL_INTERFACE: -T share/lib/x86/link.ld>)
   install(FILES x86/link.ld
