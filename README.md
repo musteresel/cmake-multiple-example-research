@@ -17,6 +17,19 @@ best achieve the following with CMake / nix:
    - approach 2: using CMake to re-execute itself
    
 
+This project contains a library / framework which is expected to be
+linked with user code.  The library / framework contains startup code
+(`main` so to say) while the user code does only provide a special
+function `CallApplication()`.
+
+ - Framework / library `mutliple::lib` (`liblib.a`)
+   - contains startup code (`main` for hosted)
+   - calls `CallApplication()`
+ - User code (example in `./test`)
+   - contains `CallApplication()` function
+
+   
+
 # The linkerscript
 
 Adding a linker script is as easy as adding `-T path/to/script.ld` to
